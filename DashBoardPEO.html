@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DashBoardPEO</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background: #f4f6f9;
+}
+
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: #2cb14d;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 12px;
+    margin: 10px 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar ul li:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.sidebar ul li.active {
+    background: white;
+    color: #2cb14d;
+    font-weight: bold;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.topbar {
+    background: #2cb14d;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    width: 150px;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.dropdown div {
+    padding: 12px;
+    cursor: pointer;
+}
+
+.dropdown div:hover {
+    background: #f1f1f1;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.map, .chart {
+    height: 250px;
+    border-radius: 10px;
+}
+
+.chart {
+    background: #dfe6e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table {
+    margin-top: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  
+}
+
+.table th {
+    background: #2cb14d;
+    color: white;
+}
+
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>infracture</h2>
+    <ul>
+        <li class="active" onclick="showSection('dashboard', this)">Dashboard</li>
+        <li onclick="showSection('projects', this)">Project Monitoring</li>
+        <li onclick="showSection('workforce', this)">Workforce</li>
+        <li onclick="showSection('reports', this)">Reports</li>
+        <li onclick="showSection('settings', this)">Settings</li>
+    </ul>
+</div>
+
+<div class="main">
+
+<div id="dashboard" class="section active">
+<div class="topbar">
+<h2>Isabela Infrastructure Monitoring System</h2>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+<div id="dropdown" class="dropdown">
+<div onclick="showSection('about')">About</div>
+<div onclick="alert('Logged out!')">Sign Out</div>
+</div>
+</div>
+
+<div class="cards">
+<div class="card"><h3>Projects</h3><p>30 Active Projects</p></div>
+<div class="card"><h3>Budget</h3><p>₱150M</p></div>
+<div class="card"><h3>Workers</h3><p>310 Employees</p></div>
+</div>
+
+<div class="grid">
+
+<!-- ✅ FREE MAP (NO API) -->
+<div class="map">
+<iframe
+width="100%"
+height="100%"
+style="border:0; border-radius:10px;"
+loading="lazy"
+allowfullscreen
+src="https://www.openstreetmap.org/export/embed.html?bbox=121.75%2C16.90%2C121.90%2C17.05&layer=mapnik&marker=16.9754%2C121.8107">
+</iframe>
+</div>
+
+<div class="chart">CHART (Budget / Progress)</div>
+
+</div>
+
+<div class="table">
+<h3>Workforce List</h3>
+<table>
+<tr><th>Name</th><th>Position</th><th>Status</th></tr>
+<tr><td>Juan Dela Cruz</td><td>Engineer</td><td>Active</td></tr>
+<tr><td>Maria Santos</td><td>Supervisor</td><td>Active</td></tr>
+</table>
+</div>
+
+</div>
+
+<div id="projects" class="section">
+<div class="topbar"><h2>Project Monitoring</h2></div>
+<div class="card">Project list / map dito</div>
+<div class="card">
+<h3>Project Transparency</h3>
+<p>Track progress and visibility of all projects.</p>
+</div>
+</div>
+
+<div id="workforce" class="section">
+<div class="topbar"><h2>Workforce</h2></div>
+<div class="card">Workers list dito</div>
+<div class="card">
+<h3>Workforce News</h3>
+<p>Latest updates and announcements for employees.</p>
+</div>
+</div>
+
+<div id="reports" class="section">
+<div class="topbar"><h2>Reports</h2></div>
+<div class="card">Charts & analytics dito</div>
+</div>
+
+<div id="settings" class="section">
+<div class="topbar"><h2>Settings</h2></div>
+<div class="card">Settings panel dito</div>
+</div>
+
+<div id="about" class="section">
+<div class="topbar"><h2>About</h2></div>
+<div class="card">
+<h3>System Info</h3>
+<p>This is a Web-Based Infrastructure Monitoring & Workforce Management System for PEO Isabela.</p>
+</div>
+</div>
+
+</div>
+
+<script>
+function showSection(sectionId, el) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+
+    document.querySelectorAll('.sidebar li').forEach(li => li.classList.remove('active'));
+    if(el) el.classList.add('active');
+
+    document.getElementById("dropdown").style.display = "none";
+}
+
+function toggleMenu() {
+    let menu = document.getElementById("dropdown");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+</script>
+
+</body>
+</html>

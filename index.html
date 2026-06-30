@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Login PEO</title>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:#92e481;
+}
+.wrapper{
+    width: 420px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+    color: rgb(0, 0, 0);
+    border-radius: 12px;
+    padding: 30px 40px;
+}
+.wrapper h2{
+    font-size: 30px;
+    text-align: center;
+}
+.input-box{
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(7, 8, 1, 0.849);
+    border-radius: 40px;
+    padding: 15px;
+    color: rgb(247, 246, 246);
+}
+.remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.btn{
+    width: 100%;
+    height: 45px;
+    background: white;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.register-link{
+    text-align: center;
+    margin-top: 15px;
+}
+.register-link a{
+    color: white;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+<form onsubmit="loginUser(event)">
+    <h2>LOGIN</h2>
+
+    <div class="input-box">
+        <input type="text" id="username" placeholder="Username" required>
+    </div>
+
+    <div class="input-box">
+        <input type="password" id="password" placeholder="Password" required>
+    </div>
+
+    <div class="remember-forgot">
+        <label><input type="checkbox"> Remember me</label>
+        <a href="#">Forgot?</a>
+    </div>
+
+    <button type="submit" class="btn">Login</button>
+
+    <div class="register-link">
+        <p>Don't have an account? 
+        <a href="DashBoardPEO.html">Register</a>
+        </p>
+    </div>
+</form>
+</div>
+
+<script>
+// LOGIN FUNCTION
+function loginUser(e){
+    e.preventDefault();
+
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    // SIMPLE DEMO LOGIN
+    if(user === "admin" && pass === "1234"){
+        window.location.href = "DashBoardPEO.html";
+    } else {
+        alert("Invalid username or password!");
+    }
+}
+</script>
+
+</body>
+</html>
