@@ -151,7 +151,6 @@ body {
 .table th, .table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
-  
 }
 
 .table th {
@@ -198,7 +197,7 @@ body {
 
 <div id="dropdown" class="dropdown">
 <div onclick="showSection('about')">About</div>
-<div onclick="alert('Logged out!')">Sign Out</div>
+<div onclick="logout()">Sign Out</div> <!-- ✅ UPDATED -->
 </div>
 </div>
 
@@ -210,7 +209,6 @@ body {
 
 <div class="grid">
 
-<!-- ✅ FREE MAP (NO API) -->
 <div class="map">
 <iframe
 width="100%"
@@ -240,19 +238,11 @@ src="https://www.openstreetmap.org/export/embed.html?bbox=121.75%2C16.90%2C121.9
 <div id="projects" class="section">
 <div class="topbar"><h2>Project Monitoring</h2></div>
 <div class="card">Project list / map dito</div>
-<div class="card">
-<h3>Project Transparency</h3>
-<p>Track progress and visibility of all projects.</p>
-</div>
 </div>
 
 <div id="workforce" class="section">
 <div class="topbar"><h2>Workforce</h2></div>
 <div class="card">Workers list dito</div>
-<div class="card">
-<h3>Workforce News</h3>
-<p>Latest updates and announcements for employees.</p>
-</div>
 </div>
 
 <div id="reports" class="section">
@@ -289,6 +279,13 @@ function showSection(sectionId, el) {
 function toggleMenu() {
     let menu = document.getElementById("dropdown");
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+/* ✅ LOGOUT FUNCTION */
+function logout() {
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.href = "login.html";
 }
 </script>
 
